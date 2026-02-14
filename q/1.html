@@ -1,1 +1,170 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirecting...</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#0f172a;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh;
+}
+
+.container{
+width:95%;
+max-width:900px;
+background:#111827;
+border-radius:18px;
+padding:25px;
+box-shadow:0 10px 40px rgba(0,0,0,.5);
+}
+
+.row{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.box{
+flex:1 1 350px;
+background:#020617;
+border-radius:14px;
+padding:18px;
+min-height:220px;
+}
+
+h2{
+margin-top:0;
+font-size:20px;
+color:#60a5fa;
+}
+
+.preview{
+word-break:break-all;
+background:#020617;
+padding:10px;
+border-radius:8px;
+border:1px solid #1e293b;
+margin-top:10px;
+font-size:14px;
+}
+
+.progress{
+margin-top:25px;
+height:12px;
+background:#1e293b;
+border-radius:10px;
+overflow:hidden;
+}
+
+.bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#3b82f6,#22c55e);
+transition:width 1s linear;
+}
+
+.timer{
+text-align:center;
+font-size:26px;
+margin-top:15px;
+font-weight:bold;
+color:#22c55e;
+}
+
+.btn{
+display:block;
+text-align:center;
+background:#2563eb;
+padding:12px;
+margin-top:20px;
+border-radius:10px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+}
+
+.btn:hover{
+background:#1d4ed8;
+}
+
+@media(max-width:700px){
+.timer{font-size:22px;}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+<div class="row">
+
+<!-- PREVIEW -->
+
+<div class="box">
+<h2>Destination Preview</h2>
+
+<div class="preview" id="linkText">
+https://www.wikipedia.org
+</div>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+
+<div class="timer" id="timer">10</div>
+
+<a class="btn" id="skipBtn" href="#">Skip Now</a>
+
+</div>
+
+<!-- AD AREA -->
+
+<div class="box">
+<h2>Advertisement</h2>
+
+<!-- Replace this iframe with your ad network code -->
+
+<iframe src="https://example.com"
+style="width:100%;height:230px;border:none;border-radius:10px;">
+</iframe>
+
+</div>
+
+</div>
+</div>
+
+<script>
+
+const url="https://www.wikipedia.org";
+document.getElementById("skipBtn").href=url;
+
+let time=10;
+const timer=document.getElementById("timer");
+const bar=document.getElementById("bar");
+
+const interval=setInterval(()=>{
+time--;
+timer.innerText=time;
+bar.style.width=((10-time)*10)+"%";
+
+if(time<=0){
+clearInterval(interval);
+window.location.href=url;
+}
+},1000);
+
+</script>
+
+</body>
+</html>
 
